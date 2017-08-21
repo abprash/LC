@@ -1,4 +1,4 @@
-package com.leetcode.www;
+package group.LC;
 
 public class FindDiff {
 	public static void main(String[] args)

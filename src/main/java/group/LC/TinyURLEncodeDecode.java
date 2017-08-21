@@ -1,4 +1,4 @@
-package com.leetcode.www;
+package group.LC;
 
 public class TinyURLEncodeDecode {
 	public static String encodeIntoTiny(String url){

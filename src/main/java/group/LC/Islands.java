@@ -1,4 +1,4 @@
-package com.leetcode.www;
+package group.LC;
 
 //Java program to count islands in boolean 2D matrix
 import java.util.*;

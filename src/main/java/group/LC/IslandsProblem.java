@@ -1,11 +1,11 @@
-package com.leetcode.www;
+package group.LC;
 
 import java.util.Arrays;
 
 public class IslandsProblem {
 	public static void main(String[] args) {
 		int grid[][]=  new int[][] {{1, 1, 0, 0, 0},
-            {1$
+            {1
 			, 1, 0, 0, 1},
             {1, 0, 0, 1, 1},
             {1, 0, 0, 0, 0},
