@@ -11,32 +11,49 @@ package group.LC;
 
 
 public class LongestCommonPrefix {
-    public String longestCommonPrefix(String[] strs) {
-        //print only the most common prefix for ALL strings
-        //it should be present in all the strings
-        if(strs == null)
-            return "";
-        if(strs.length == 0)
-            return "";
-        String testString = new String();
-        int initPosition = 0;
-        boolean allEqual = false, noMoreLength = false;
-        for(int i=0; i<strs.length; i++){
-            char c = strs[i].charAt(initPosition);
-            for(int j=0 ; j<strs.length; j++){
-                char tempC = strs[j].charAt(initPosition);
-                if(c != tempC){
-                    allEqual = false;
-                    break;
-                }
-            }
-            if(!allEqual)
-                break;
-            testString = testString + c;
-            initPosition++;
-        }
-        return testString;
-    }
+	 public String longestCommonPrefix(String[] strs) {
+	        //print only the most common prefix for ALL strings
+	        //it should be present in all the strings
+	        if(strs == null)
+	            return "";
+	        if(strs.length == 0)
+	            return "";
+	        String testString = new String();
+	        int initPosition = 0;
+	        boolean notEqual = false, noMoreLength = false;
+	        for(int i=0; i<strs.length; i++){
+	            int charPointer = i;
+	            String currentString = strs[0];
+	            if(charPointer >= currentString.length())
+	                break;
+	            char c = currentString.charAt(charPointer); 
+	            for(int j=1 ; j<strs.length; j++){
+	                int stringPointer = j;
+	                String currentString2 = strs[stringPointer];
+	                if(charPointer >= currentString2.length()){
+	                    noMoreLength = true;
+	                    break;
+	                }
+	                char tempChar = currentString2.charAt(charPointer);
+	                if(c != tempChar){
+	                    notEqual = true;
+	                    break;
+	                }
+	            }
+	            if(noMoreLength){
+	                noMoreLength = false;
+	                continue;
+	            }
+	            if(notEqual)
+	                break;
+	            else
+	                testString+=c;
+	            notEqual = false;
+	            noMoreLength = false;
+	            
+	        }
+	        return testString;
+	    }
     
     public static void main(String args){
     	//launch it
