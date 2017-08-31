@@ -21,7 +21,7 @@ public class LongestCommonPrefix {
 	        String testString = new String();
 	        int initPosition = 0;
 	        boolean notEqual = false, noMoreLength = false;
-	        for(int i=0; i<strs.length; i++){
+	        for(int i=0; ; i++){
 	            int charPointer = i;
 	            String currentString = strs[0];
 	            if(charPointer >= currentString.length())
@@ -40,7 +40,7 @@ public class LongestCommonPrefix {
 	                    break;
 	                }
 	            }
-	            if(noMoreLength){
+	            if(noMoreLength && !notEqual){
 	                noMoreLength = false;
 	                continue;
 	            }
