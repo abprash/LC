@@ -1,5 +1,8 @@
 package group.LC;
 
+import java.util.Arrays;
+import java.util.Set;
+
 /*
  *  Given an array of n integers where n > 1, nums, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
 
@@ -26,6 +29,7 @@ public class Med_ProdArrayExceptSelf {
 			ans[i] *= (int) prodr;
 		}
 		return ans;
+		
 	}
 
 }
