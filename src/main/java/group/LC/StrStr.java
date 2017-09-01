@@ -29,45 +29,39 @@ public class StrStr {
             return 0;
         if(haystack.equals("") && needle.equals(""))
             return 0;
+        int initPos = 0, finalPos = -1;
         //iterate thro the haystack now
         for(int i=0; i<haystack.length(); i++){
-            haystackPointer = i;
-            char haystackChar = haystack.charAt(i);
-            if(needlePointer >= needle.length())
-                break;
-            char needleChar = needle.charAt(needlePointer);
-            if(haystackChar == needleChar){
+            //check the first letter of needle with each letter of haystack
+            //if its a match
+            //go to loop below
+            if(haystack.charAt(i) == needle.charAt(0)){
+                //it has started
+                initPos = i;
                 startFlag = true;
-                ans = i;
-                //i++;
-                //now iterate thro both needle and haystack
                 for(int j=0; j<needle.length(); j++){
-                    if(i>=haystack.length())
-                        return -1;               
-                    if(needle.charAt(j) == haystack.charAt(i)){
-                        //all ok
+                    //iterate thro the needle
+                    if(i< haystack.length()){
+                        if(needle.charAt(j) != haystack.charAt(i)){
+                            //break out
+                            startFlag = false;
+                            i = initPos;
+                            break;
+                        }
+                        if(j == needle.length()-1 && startFlag){
+                            finalPos = initPos;
+                            return finalPos;
+                        }
+                        i++;
                     }
-                    else{
-                        startFlag = false;
-                        ans = -1;
-                        break;
-                        //end flag already false
-                    }
-                    i++;
-                    if(j==needle.length()-1 && startFlag)
-                        endFlag = true;
                 }
-                //endFlag = true;
-                if(endFlag)
-                    return ans;
-                else{
-                    startFlag = false; 
-                    endFlag = false;
-                    needlePointer = 0;
-                }
+            }else{
+                startFlag = false;
             }
+            //else
+            //keep repeating
         }
-        return ans;
+        return finalPos;
     }
 
 }
