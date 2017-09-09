@@ -7,7 +7,7 @@ public class Segregate0s1sand2s {
 	public static void main(String[] args){
 		int[] arr = {2,1,0,1,1,1,2,2,1,0};
 		//System.out.println(Arrays.toString(segregate(arr)));
-		fibo(6);
+		/*fibo(6);
 		System.out.println("sum is"+sum);
 		System.out.println(fact(50));
 		checkingBitwiseOperators(4,4);
@@ -16,7 +16,13 @@ public class Segregate0s1sand2s {
 		System.out.println("=============");
 		checkingBitwiseOperators(5,5);
 		System.out.println("=============");
-		checkingBitwiseOperators(6,6);
+		checkingBitwiseOperators(6,6);*/
+		double a = 10.0f;
+		double b = 0.0f;
+		int c = 0;
+		int d = 0;
+		int[] arr1 = new int[10];
+		System.out.println(a/b);
 	}
 	
 	public static double fact(double x){
