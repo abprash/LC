@@ -1,5 +1,9 @@
 package group.LC;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
 class TreeLinkNode {
 	      int val;
 	      TreeLinkNode left, right, next;
@@ -17,6 +21,8 @@ class TreeLinkNode {
 public class TreeLinkNodeLauncher {
 	
 	    public static void main(String[] args){
+	    	HashMap<Integer, Integer> l = new HashMap<Integer, Integer>();
+	    	Set<Entry<Integer, Integer>> x =  l.entrySet();
 	    	TreeLinkNode root = new TreeLinkNode(1);
 	    	root.left = new TreeLinkNode(2);
 	    	root.right = new TreeLinkNode(3);
