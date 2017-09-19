@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 
 public class KillProcess {
 	
-	public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
+	/*public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
         //do the initial validation
         if(pid == null && ppid == null )
             return new ArrayList<Integer>();
@@ -55,6 +55,42 @@ public class KillProcess {
         else{
             toKill = new ArrayList<Integer>();
             toKill.add(kill);
+        }
+        return toKill;
+    }*/
+	
+	public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
+        HashMap<Integer,List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        for(int i=0; i<ppid.size(); i++){
+            Integer currPid = pid.get(i);
+            Integer currPpid = ppid.get(i);
+            if(!map.containsKey(currPpid)){
+            	List<Integer> list = new ArrayList<Integer>();
+            	list.add(currPid);
+                map.put(currPpid, list);
+            }
+            else{
+                List<Integer> temp =  map.get(currPpid);
+                temp.add(currPid);
+                map.put(currPpid, temp);
+            }
+        }
+        
+        //now what we need is a stack for doing a simple dfs
+        //we put the kill inside the stack
+        //we keep going and deleting the nodes which have 'kill' as their parent
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(kill);
+        List<Integer> toKill = new ArrayList<Integer>();
+        while(stack.size() > 0){
+            //get the element's children
+            int val = stack.pop();
+            toKill.add(val);
+            if(map.containsKey(val)){
+            List<Integer> listVal = map.get(val);
+            stack.addAll(listVal);
+            }
+            //System.out.println(toKill);
         }
         return toKill;
     }
