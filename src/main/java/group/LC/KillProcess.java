@@ -2,8 +2,10 @@ package group.LC;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class KillProcess {
 	
@@ -17,6 +19,8 @@ public class KillProcess {
         if(kill == 0)
             return new ArrayList<Integer>();
         HashMap<Integer,List<Integer>> map = new HashMap<Integer, List<Integer>>();
+        
+        //insertion phase
         for(int i=0; i<ppid.size(); i++){
             Integer currPid = pid.get(i);
             Integer currPpid = ppid.get(i);
@@ -26,24 +30,32 @@ public class KillProcess {
                 map.put(currPpid, list);
             }
             else{
-                List<Integer> temp =  map.get(currPpid);
+            	List<Integer> temp =  map.get(currPpid);
                 temp.add(currPid);
                 map.put(currPpid, temp);
             }
+            //now lets append to the values
         }
-        System.out.println(map);
-        
+        //prep phase
+        for(Entry<Integer, List<Integer>> entry : map.entrySet()){
+            int key = entry.getKey();
+            List<Integer> list = entry.getValue();
+            //check if this key is present as a value in any list
+            //get all the values
+            Collection<List<Integer>> valueList =  map.values();
+            for(List<Integer> value : valueList){
+                if(value.contains(key))
+                    value.addAll(list);
+            }
+        }
         //now find the number of process which'll be killed
         List<Integer> toKill = map.get(kill);
-        for(int temppid : toKill){
-            toKill
+        if(toKill != null)
+            toKill.add(kill);
+        else{
+            toKill = new ArrayList<Integer>();
+            toKill.add(kill);
         }
-        toKill.add(kill);
         return toKill;
     }
-	
-	public static void main(String[] args){
-		new KillProcess().killProcess(Arrays.As
-	}
-
 }
