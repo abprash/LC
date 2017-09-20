@@ -20,7 +20,6 @@ public class IsSameTree {
     
     public boolean isSameTree(TreeNode p, TreeNode q) {
         //lets dfs
-    	l.a
         dfs(p,1);
         dfs(q,2);
         if(l1.equals(l2))
@@ -54,6 +53,13 @@ public class IsSameTree {
     
     
     
-    /////******************* excellent REcursicve solution
+    /////******************* excellent REcursive solution
+    public boolean isSameTree2(TreeNode p, TreeNode q){
+    	if(p == null && q == null)
+    		return true;
+    	if(p == null || q == null)
+    		return false;
+    	return isSameTree2(p.left, q.left) && isSameTree2(p.right, q.right);
+    }
     
 }
