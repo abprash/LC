@@ -1,14 +1,9 @@
 package group.LC;
-
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Set;
+class LRUCache {
 
-public class LRUCache {
-
-	
-	//*************************************almost worked***************
-	//12/18 test cases passed
-	
     HashMap<Integer, ValueObject> cache = new HashMap<>();
     //to track each new entry
     int counter = 0;
@@ -30,9 +25,14 @@ public class LRUCache {
             //update the age
             cache.remove(key);
             cache.put(key, new ValueObject(retVal,maxAge));
-            //System.out.println("After doing GET -key:"+key+" "+cache);
+            // System.out.println("After GET:"+key+"");
+            // System.out.println("Cache size :"+LRUCache.counter+", max size:"+LRUCache.maxSize);
+            // System.out.println(cache.toString()+"\n-----------");
             return retVal;
         }
+        // System.out.println("After GET:"+key+"");
+        // System.out.println("Cache size :"+LRUCache.counter+", max size:"+LRUCache.maxSize);
+        // System.out.println(cache.toString()+"\n-----------");
         return -1;
     }
     
@@ -40,13 +40,13 @@ public class LRUCache {
         maxAge++;
         if(counter < maxSize){
             //if the key is already present
-            cache.put(key, new ValueObject(value, maxAge));
             //we simply insert it
-            counter++;
-            // for(Entry<Integer,ValueObject> e : cache.entrySet()){
-            //     System.out.println("<"+key+", "+e.getValue().value+"> , age - "+e.getValue().age);
-            // }
-            // System.out.println("______________");
+            if(cache.containsKey(key))
+                cache.put(key, new ValueObject(value, maxAge));
+            else{
+                cache.put(key, new ValueObject(value, maxAge));
+                counter++;
+            }
         }
         else{
             int minValue = Integer.MAX_VALUE;
@@ -56,6 +56,9 @@ public class LRUCache {
                     //update that and break
                     ValueObject v = new ValueObject(value,maxAge);
                     cache.put(key,v);
+                    // System.out.println("After PUT :"+key+",value :"+value);
+                    // System.out.println("Cache size :"+LRUCache.counter+", max size:"+LRUCache.maxSize);
+                    // System.out.println(cache.toString()+"\n-----------");
                     return;
                 }
                 
@@ -69,12 +72,6 @@ public class LRUCache {
             cache.remove(minKey);
             ValueObject v = new ValueObject(value,maxAge);
             cache.put(key,v);
-            //System.out.println("After putting "+key);
-            // for(Entry<Integer,ValueObject> e : cache.entrySet()){
-            //     System.out.println("<"+key+", "+e.getValue().value+">, age - "+e.getValue().age);
-            // }
-            //System.out.println("______________");
-            //System.out.println("in put-->"+cache.size());
             //now we have to replace something
             //scan the map for the one with the least age
             //remove it
@@ -84,6 +81,9 @@ public class LRUCache {
         //we have to iterate over the values
         //if it already exists - 
             //we increment the priority level to maxPriority
+        //System.out.println("After PUT:"+key+",value:"+value);
+        //System.out.println("Cache size :"+LRUCache.counter+", max size:"+LRUCache.maxSize);
+        //System.out.println(cache.toString()+"\n-----------");
     }
 }
 
@@ -96,4 +96,15 @@ class ValueObject{
         this.age = age;
         this.value = value;
     }
+    
+    @Override
+    public String toString(){
+        return "Value:"+value+",age:"+age;
+    }
 }
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
