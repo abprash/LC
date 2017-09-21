@@ -1,5 +1,8 @@
 package group.LC;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Definition for an interval.
  */ 
@@ -15,8 +18,10 @@ class MergeIntervals {
         //lets sort it
         if(intervals.size() <= 1)
             return intervals;
+        
         //sort the collection using the first start point
-        //using lambda function in Java 8
+        //using lambda anonymous function to sort the damn list
+        
         intervals.sort((i1,i2) -> Integer.compare(i1.start, i2.start));
         int start = intervals.get(0).start;
         int end = intervals.get(0).end;
