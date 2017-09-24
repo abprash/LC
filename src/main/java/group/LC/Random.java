@@ -44,8 +44,16 @@ public class Random {
 		String s = "sdjdf     jksfd sjdfhjs      jsdhdf   sjkdf                   kjsdfjs                !!";
 		System.out.println(Arrays.toString(s.split("\\W+")));
 		System.out.println(reverseWords("the     sky is blue!!"));
+		printPowersOfNos(1,10);
 	}
-	
+	public static void printPowersOfNos(int n1, int n2){
+		for(int i=n1; i<n2; i++){
+        	for(int j=1; j<50; j++){
+        		if((i*j)%10 == 0)
+        			System.out.println("i--"+i+",j--"+j);
+        	}
+        }
+	}
 	 public static String reverseWords(String s) {
 	        //s may have trailing or leading spaces
 	        //trim them
