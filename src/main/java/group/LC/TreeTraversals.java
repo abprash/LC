@@ -43,5 +43,29 @@ public class TreeTraversals {
 	 //for postorder traversal - keep putting in the right nodes first into the stack
 	 //and keep going in to the above method
 	 
+	 
+	 //************************level order traversal and returning the answer as a List of lists
+	 public List<List<Integer>> levelOrder(TreeNode root) {
+	        if(root == null)
+	            return new ArrayList<List<Integer>>();
+	        Queue<TreeNode> q = new LinkedList<>();
+	        q.add(root);
+	        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+	        //ans.add(Arrays.asList(new Integer[]{root.val}));
+	        while(!q.isEmpty()){
+	            List<Integer> subList = new ArrayList<>();
+	            ///determine the size of the sublist
+	            int levelLength = q.size();
+	            for(int i=0; i<levelLength; i++){
+	                if(q.peek().left != null)
+	                    q.add(q.peek().left);
+	                if(q.peek().right != null)
+	                    q.add(q.peek().right);
+	                subList.add(q.remove().val);
+	            }
+	            ans.add(subList);
+	        }
+	        return ans;
+	    }
 
 }
