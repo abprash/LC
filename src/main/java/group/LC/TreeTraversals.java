@@ -67,5 +67,16 @@ public class TreeTraversals {
 	        }
 	        return ans;
 	    }
+	 
+	 //************************IS complete binary tree
+	 public boolean isComplete(TreeNode root) {
+	        if(root == null)
+	            return true;
+	        if(root.left== null && root.right == null)
+	            return true;
+	        if(root.left == null || root.right == null)
+	            return false;
+	        return isComplete(root.left) && isComplete(root.right);
+	    }
 
 }
