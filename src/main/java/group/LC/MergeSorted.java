@@ -63,8 +63,7 @@ The number of elements initialized in nums1 and nums2 are m and n respectively.
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        Arrays.asList(new int[] {1});
-        ans.add(Arrays.asList(new int[]{root.val}));
+        ans.add(Arrays.asList(new Integer[]{root.val}));
         while(q.size() > 0){
             List<Integer> tempList = new ArrayList<>();
             TreeNode current = q.remove();
