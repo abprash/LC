@@ -1,5 +1,10 @@
 package group.LC;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class TwoSum {
 	public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> tracker = new HashMap<Integer, Integer>();
@@ -27,7 +32,7 @@ class TwoSum2 {
     Map<Integer, Integer> map = new HashMap<Integer, Integer>();
     List<Integer> list = new ArrayList<>();
     /** Initialize your data structure here. */
-    public TwoSum() {
+    public TwoSum2() {
         super();
     }
     

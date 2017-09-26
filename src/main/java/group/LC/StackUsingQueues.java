@@ -1,10 +1,13 @@
 package group.LC;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class StackUsingQueues {
     Queue<Integer> queue = new LinkedList<>();
     int lastAdded = Integer.MAX_VALUE;
     /** Initialize your data structure here. */
-    public MyStack() {
+    public StackUsingQueues() {
         super();
     }
     
