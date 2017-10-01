@@ -26,5 +26,11 @@ public class IsSymmetricTree {
         if(left.val != right.val)
             return false;
         return helper(left.left,right.right) && helper(left.right, right.left);
-    } 
+    }
+    
+    public static void main(String[] args){
+    	if(Character.isDigit('d'));
+    	int x = Integer.parseInt("000");
+    	System.out.println(x);
+    }
 }
