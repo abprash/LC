@@ -95,5 +95,17 @@ public class ValidateIPAddress {
     	System.out.println(new ValidateIPAddress().validIPAddress("172.16.254.1"));
     	System.out.println(new ValidateIPAddress().validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:73"));
     	System.out.println(Arrays.toString("2001:0db8:85a3:0:0:8A2E:0370:7334:".split(":")));
+    	String x = "23742764278";
+    	// why is it returning
+    	// 23742764
+    	// 23742764
+    	// in case of an overflow - 
+    	// 2147483647
+    	// 
+    	try{
+    	System.out.println(Integer.parseInt("23742764278"));
+    	}catch(NumberFormatException e){
+    		System.out.println(x);
+    	}
     }
 }
