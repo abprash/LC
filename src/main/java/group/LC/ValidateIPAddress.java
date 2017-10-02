@@ -99,13 +99,13 @@ public class ValidateIPAddress {
     	// why is it returning
     	// 23742764
     	// 23742764
-    	// in case of an overflow - 
-    	// 2147483647
-    	// 
+    	// in case of an overflow = 2147483647
+    	// in case of an underflow = return -2147483648
+    	//in case of numbers containing letters = return 23742764
     	try{
     	System.out.println(Integer.parseInt("23742764278"));
     	}catch(NumberFormatException e){
-    		System.out.println(x);
+    		System.out.println(e.toString());
     	}
     }
 }
