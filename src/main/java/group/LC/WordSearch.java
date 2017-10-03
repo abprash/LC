@@ -5,6 +5,8 @@ import java.util.List;
 
 public class WordSearch {
 	
+	//76/87 test cases passing
+	
     private boolean isFound = false;
     public boolean exist(char[][] board, String word) {
         if(board == null || word == null)
@@ -30,6 +32,7 @@ public class WordSearch {
         availableDirections.add(3);
         availableDirections.add(4);
         availableDirections.remove(Integer.valueOf(incomingDir));
+        System.out.println(incomingDir+", list -"+availableDirections);
         //we have the other 3 directions to go
         if(word.charAt(startPos) == board[i][j]){
             if(startPos == word.length() - 1){
