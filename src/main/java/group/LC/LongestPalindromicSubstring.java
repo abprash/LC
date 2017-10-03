@@ -1,5 +1,8 @@
 package group.LC;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class LongestPalindromicSubstring {
     private int maxLen, left;
     public String longestPalindrome(String s) {
@@ -26,6 +29,10 @@ public class LongestPalindromicSubstring {
             //maxLen is just the length of the palindromic string
             maxLen = c2 - c1 - 1;
         }
+    }
+    
+    public static void main(String[] args){
+    	List<Integer> availableDirections = Arrays.asList(new Integer[]{1,2,3,5});
     }
     
 }
