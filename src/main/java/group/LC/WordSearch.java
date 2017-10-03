@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordSearch {
+	//****
+	//79/87 test cases passing
+	//****
+	//we have the other 3 directions to go
+    //we need to have a visited flag
+    //to store the positions visited
+    //or some mechanism to keep track of the positions visited
 	
-	//76/87 test cases passing
-	
-    private boolean isFound = false;
+	private boolean isFound = false;
     public boolean exist(char[][] board, String word) {
         if(board == null || word == null)
             return false;
@@ -17,22 +22,21 @@ public class WordSearch {
             for(int j=0; j<board[0].length; j++){
                 if(board[i][j] == word.charAt(0)){
                     //call further search
-                    furtherSearch(i,j,word,0,4, board);
+                    deepSearch(i,j,word,0,0, board);
+                    if(isFound)
+                        return true;
                 }
             }
         }
-        if(isFound)
-            return true;
         return false;
     }
-    public void furtherSearch(int i, int j, String word, int startPos, int incomingDir, char[][] board){
+    public void deepSearch(int i, int j, String word, int startPos, int incomingDir, char[][] board){
         List<Integer> availableDirections = new ArrayList<>();
         availableDirections.add(1);
         availableDirections.add(2);
         availableDirections.add(3);
         availableDirections.add(4);
         availableDirections.remove(Integer.valueOf(incomingDir));
-        System.out.println(incomingDir+", list -"+availableDirections);
         //we have the other 3 directions to go
         if(word.charAt(startPos) == board[i][j]){
             if(startPos == word.length() - 1){
@@ -43,26 +47,26 @@ public class WordSearch {
                 if(i1 == 1){
                     //we have to go up
                     //but we will be incoming as down in the next cell
-                    if(j-1 >= 0 )
-                        furtherSearch(i,j-1,word, startPos+1, 3, board);
+                    if(j-1 >= 0 && startPos < word.length())
+                    	deepSearch(i,j-1,word, startPos+1, 3, board);
                 }
                 else if(i1 == 2){
                     //we have to go right
                     //but we will be incoming as left in the next cell
-                    if(i+1 < board.length)
-                        furtherSearch(i+1,j,word, startPos+1, 4, board);
+                    if(i+1 < board.length && startPos < word.length())
+                    	deepSearch(i+1,j,word, startPos+1, 4, board);
                 }
                 else if(i1 == 3){
                     //we have to go down
                     //but we will be incoming as up in the next cell
-                    if(j+1 < board[0].length)
-                        furtherSearch(i,j+1,word, startPos+1, 1, board);
+                    if(j+1 < board[0].length && startPos < word.length())
+                    	deepSearch(i,j+1,word, startPos+1, 1, board);
                 }
                 else if(i1 == 4){
                     //we have to go left
                     //but we will be incoming as right in the next cell
-                    if(i-1 >= 0)
-                        furtherSearch(i-1,j,word, startPos+1, 2, board);
+                    if(i-1 >= 0 && startPos < word.length())
+                    	deepSearch(i-1,j,word, startPos+1, 2, board);
                 }
             }
         }
