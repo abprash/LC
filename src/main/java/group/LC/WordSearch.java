@@ -72,4 +72,41 @@ public class WordSearch {
         }
     }
     
+    
+    //*****************************************************
+    //actual right implementation
+    //all cases passed !!!!!!!!!!!
+    static boolean[][] visited ;
+    public boolean exist2(char[][] board, String word) {
+        if(board == null)
+            return false;
+        
+        int m = board.length, n = board[0].length;
+        visited = new boolean[m][n];
+        for(int i=0; i<m ; i++){
+            for(int j=0; j<n; j++){
+                if(word.charAt(0) == board[i][j] && deepSearch(i,j,word,board, 0)) return true;
+            }
+        }
+        return false;
+        
+    }
+    
+    public boolean deepSearch(int i, int j, String word, char[][] board, int index){
+        if(index == word.length())    
+            return true;//we are over the word
+        //all bounds checking
+        if(i<0 || j <0 || i>=board.length || j>=board[0].length || word.charAt(index) != board[i][j] || visited[i][j])
+            return false;
+        visited[i][j] = true;
+        if(deepSearch(i+1,j,word,board,index+1) || 
+          deepSearch(i-1,j,word,board,index+1) || 
+          deepSearch(i,j-1,word,board,index+1) || 
+          deepSearch(i,j+1,word,board,index+1))
+            return true;
+        
+        //resetting it so that we know that starting point is now fresh to parse again
+        visited[i][j] = false;
+        return false;
+    }
 }
