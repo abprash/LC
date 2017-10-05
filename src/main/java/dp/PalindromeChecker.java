@@ -1,6 +1,7 @@
 package dp;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PalindromeChecker {
@@ -24,7 +25,9 @@ public class PalindromeChecker {
 	
 	public static void main(String[] args){
 		//System.out.println(new PalindromeChecker().checkPalindrome("asdfghjkhgfdsa"));
+		fib=new int[10];
 		System.out.println(new PalindromeChecker().fib(10));
+		System.out.println(Arrays.toString(fib));
 		//System.out.println(ans);
 		int[][] grid = new int[][] {
 			{0,0,0,0,0,0,0},
@@ -42,17 +45,26 @@ public class PalindromeChecker {
 		System.out.println(new PalindromeChecker().countPaths(grid,0,0));
 	}
 	
+	private static int[] fib;
 	public int fib(int n){
-		if(n == 0)
+		if(n == 0){
+			//fib[0] = 0;
 			return 0;
-		else if(n == 1)
+		}
+		else if(n == 1){
+			fib[0] = 1;
 			return 1;
+		}
 		else{
+			if(fib[n-1] != 0) return fib[n-1];
+			
 			int temp = fib(n-1) + fib(n-2);
-			System.out.println(temp);
+			//System.out.println(temp);
+			fib[n-1] = temp;
 			return temp;
 		}
 	}
+	
 	
 	public int countPaths(int[][] grid, int i, int j){
 		//invalid cases - eliminate
