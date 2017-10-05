@@ -7,6 +7,8 @@ public class MergeSort {
 	static int[] helper = new int[10];
 	
 	public void mergeSort(int[] arr, int low, int high){
+		//low should definitely be lesser than high
+		//else its already sorted
 		if(low < high){
 		int middle = (low + high)/2;
 		mergeSort(arr, low, middle);
@@ -27,6 +29,7 @@ public class MergeSort {
 		int i = low, j = (high+low)/2;
 		j = middle + 1;
 		int k = low;
+		//we are going till the end of the array anyway so <= is used
 		while(i <= middle && j <= high){
 			if(helper[i] < helper[j]){
 				arr[k] = helper[i];
@@ -39,6 +42,7 @@ public class MergeSort {
 			k++;
 		}
 		//copy the remaining elements into arr
+		//some elements may be left out
 		while(i <= middle){
 			arr[k] = helper[i];
 			i++;
