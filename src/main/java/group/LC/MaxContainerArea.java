@@ -41,4 +41,8 @@ public class MaxContainerArea {
         }
         return maxArea;
     }
+	
+	public static void main(String[] args){
+		System.out.println(Integer.parseInt(""));
+	}
 }
