@@ -42,6 +42,21 @@ There is a more generic way of solving this problem.
     //***********************************************************
     //PROPER WAY OF DOING IT
     
+        public boolean isPalindromeProperWay(int x) {
+            if(x <0 || (x!= 0 && x%10 == 0))
+                return false;
+            int rev = 0;
+            while(x > rev){
+                //if there are odd number of digits then x will become equal to rev and break out
+                rev = rev*10 + x%10;
+                x = x/10;
+            }
+            if(x == rev || rev/10 == x)
+                return true;
+            else
+                return false;
+        }
+    
     
     
 }
