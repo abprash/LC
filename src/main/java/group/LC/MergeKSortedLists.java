@@ -1,6 +1,8 @@
 package group.LC;
 
- // Definition for singly-linked list.
+import java.util.PriorityQueue;
+
+// Definition for singly-linked list.
   class ListNode {
       int val;
       ListNode next;
@@ -34,4 +36,40 @@ public class MergeKSortedLists {
             return l2;
         }
     }
+    
+    //*
+    /*
+     *//*********************************** will use the ultra awesome Priority Queue solution now
+     *Priority Queue will use additional space though but with better time complexity
+     * 
+     * 
+     * 
+    */
+    
+    PriorityQueue<Integer> pqueue = new PriorityQueue<Integer>((Integer a, Integer b) -> b.compareTo(a));
+    public ListNode mergeKLists2(ListNode[] lists) {
+        if(lists == null || lists.length == 0)
+             return null;
+        for(int i=0; i<lists.length; i++){
+            ListNode iter = lists[i];
+            while(iter != null){
+                pqueue.add(iter.val);
+                iter = iter.next;
+            }
+        }
+        ListNode iter = null, head = null;
+        while(pqueue.size() > 0){
+            if(iter == null){
+                iter = new ListNode(pqueue.remove());
+                head = iter;
+            }
+            else{
+                iter.next = new ListNode(pqueue.remove());
+                iter = iter.next;
+            }
+            //iter = iter.next;
+        }
+        return head;
+    }
 }
+
