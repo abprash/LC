@@ -82,3 +82,69 @@ public class SerializeAndDeserializeTree_Working_Yes {
 // Your Codec object will be instantiated and called as such:
 // Codec codec = new Codec();
 // codec.deserialize(codec.serialize(root));
+
+
+//****************************
+//*******************************Doing with post order and stack
+//***************************
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        //preorder traversal worked
+        //lets do a in and post order traversal
+        StringBuilder sb = new StringBuilder();
+        helper_BuildPreOrderString(root, sb);
+        System.out.println(sb);
+        return sb.toString();
+    }
+    public void helper_BuildPreOrderString(TreeNode root, StringBuilder sb){
+        if(root == null){
+            sb.append("X").append(",");
+        }
+        else{
+            helper_BuildPreOrderString(root.left, sb);
+            helper_BuildPreOrderString(root.right, sb);
+            sb.append(root.val).append(",");
+        }
+    }
+    
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        //now parse the string and dump into a stack
+        Stack<String> q = new Stack<>();
+        q.addAll(Arrays.asList(data.split(",")));
+        TreeNode root = helper_BuildTree(q);
+        return root;
+    }
+    
+    public TreeNode helper_BuildTree(Stack<String> q){
+        if(q.isEmpty()){
+            return null;
+        }
+        else{
+            if(q.peek().equals("X")){
+                q.pop();
+                return null;
+            }
+            //parse it in preorder style
+            TreeNode root = new TreeNode(Integer.parseInt(q.pop()));
+            root.right = helper_BuildTree(q);
+            root.left = helper_BuildTree(q);
+            return root;
+        }
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));

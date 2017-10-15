@@ -40,6 +40,8 @@ public class App
     		System.out.println(navFinal);
     		String x1 = String.format("%.2f",navFinal);
     		System.out.println(x1);
+    		StringBuilder sb = new StringBuilder();
+    		new String(sb);
     		//System.out.printf("%.2f",navFinal);
     		
     }
