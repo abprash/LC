@@ -1,6 +1,7 @@
 package group.LC;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -43,5 +44,7 @@ public class RotateImage {
     	List<String> l2 = new ArrayList<String>();
     	//have no option but to parse it as a list
     	 Queue<String> q = new LinkedList<>();
+         //parse the string into a list
+         q.addAll(Arrays.asList("df,s,d,f,sdf".split(",")));
     }
 }
