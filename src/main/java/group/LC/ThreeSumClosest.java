@@ -44,6 +44,7 @@ public class ThreeSumClosest {
     }
     
     public static void main(String[] args){
-    	
+    	char[] ans = "sdf".toCharArray();
+    	ans.toString();
     }
 }
