@@ -2,6 +2,10 @@ package group.LC;
 
 public class JumpGame {
 	
+	//can jump only once
+	//no jump chaining
+	
+	
     public boolean canJump(int[] nums) {
         //the jump is only once and
         //from one index only
