@@ -1,5 +1,8 @@
 package group.LC;
 
+import java.util.LinkedList;
+import java.util.ListIterator;
+
 public class JumpGame {
 	
 	//can jump only once
@@ -19,5 +22,23 @@ public class JumpGame {
         }
         
         return true;
+    }
+    
+    public static void main(String[] args){
+    	LinkedList<Integer> l = new LinkedList<Integer>();
+    	l.add(1);
+    	l.add(2);
+    	l.add(3);
+    	l.add(4);
+    	l.add(17);
+    	
+    	ListIterator<Integer> it =  l.listIterator(l.size());
+    	while(it.hasPrevious())
+    		System.out.println(it.previous());
+    	
+    	for(int i=0; true; i++){
+    		
+    	}
+    	float f = 51;
     }
 }
