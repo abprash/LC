@@ -3,7 +3,11 @@ package group.LC;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Random {
 	
@@ -29,7 +33,7 @@ public class Random {
 		return ans;
 	}
 	public static void main(String[] args){
-		int[] arr = {1,2,3,4,5,6,7,8,8,9,10};
+		/*int[] arr = {1,2,3,4,5,6,7,8,8,9,10};
 		int[] arr2 = {1,10,11,12,13,2,3,4,5,6,7,8,9};
 		System.out.println(getFirstRepeatingNumber(arr));
 		System.out.println(Integer.MAX_VALUE);
@@ -44,7 +48,12 @@ public class Random {
 		String s = "sdjdf     jksfd sjdfhjs      jsdhdf   sjkdf                   kjsdfjs                !!";
 		System.out.println(Arrays.toString(s.split("\\W+")));
 		System.out.println(reverseWords("the     sky is blue!!"));
-		printPowersOfNos(1,10);
+		printPowersOfNos(1,10);*/
+		
+		Map<Integer, String> map = new HashMap<>();
+		SortedSet<Integer> ss = new TreeSet<>();
+		List<Integer> l = new ArrayList<>();
+		l.set(0, 0);
 	}
 	public static void printPowersOfNos(int n1, int n2){
 		for(int i=n1; i<n2; i++){
@@ -72,4 +81,5 @@ public class Random {
 	        System.out.println(1*2*3*4*5*6*7*8*9*10*11);
 	        return new String(sb);
 	    }
+	 
 }

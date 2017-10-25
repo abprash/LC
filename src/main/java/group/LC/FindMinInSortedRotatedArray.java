@@ -1,5 +1,9 @@
 package group.LC;
 
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
+
 public class FindMinInSortedRotatedArray {
 
 	//we have to do a O(log N) solution
@@ -48,4 +52,20 @@ public class FindMinInSortedRotatedArray {
         }
         return  Math.min(min1, min2);
     }
+	
+	public static void main(String[] args){
+		//we need to print the nano seconds
+		
+		
+		long timeInMilliSeconds = Calendar.getInstance().getTimeInMillis();
+		
+		
+		//Math.random()*10 + 1;
+		for(int i=0; i<10; i++)
+		System.out.println((int) ( Math.random()*100 ));
+		Set<Integer> randomSet = new HashSet<>();
+		int a = (int) randomSet.toArray()[0];
+		
+		
+	}
 }
