@@ -21,4 +21,15 @@ public class MajorityElement {
        }
         return nums[index]; 
     }
+    
+    public static void main(String[] args){
+    	
+    	String s = "sdf";
+    	String[] parts = {"d","\ts1","\ts2","\t\tf1"};
+    	for(int i=0; i<parts.length; i++){
+    		if(parts[i].contains("\t"))
+    			parts[i] = parts[i].replaceAll("\t", "");
+    		System.out.println(parts[i]);
+    	}
+    }
 }
