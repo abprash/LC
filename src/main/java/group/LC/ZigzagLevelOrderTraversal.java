@@ -18,6 +18,42 @@ import java.util.Stack;
  */
  public class ZigzagLevelOrderTraversal {
 	 
+	 /**
+	  * Definition for a binary tree node.
+	  * public class TreeNode {
+	  *     int val;
+	  *     TreeNode left;
+	  *     TreeNode right;
+	  *     TreeNode(int x) { val = x; }
+	  * }
+	  */
+	 class Solution {
+	     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+	         List<List<Integer>> ans = new ArrayList<>();
+	         helper(ans, 0, root);
+	         return ans;
+	     }
+	     
+	     public void helper(List<List<Integer>> ans, int depth, TreeNode root){
+	         if(root == null)
+	             return;
+	         if(ans.size() > depth){
+	             if(depth %2 == 1)
+	                 ans.get(depth).add(0, root.val);
+	             else
+	                 ans.get(depth).add(root.val);
+	         }
+	         else{
+	             List<Integer> l = new ArrayList<>();
+	             l.add(root.val);
+	             ans.add(l);
+	         }
+	         helper(ans, depth+1, root.left);
+	         helper(ans, depth+1, root.right);
+	         return;
+	     }
+	 }
+	 
 	 //**********************************************
 	 //very hacky way of doing zig zag traversal 
 	 //not the most appropriate way
