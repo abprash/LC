@@ -14,7 +14,7 @@ public class CoinChangeProblem {
 		ans[0] = 0;
 		for(int i=1; i<ans.length; i++){
 			
-			ans[i] = Integer.MAX_VALUE;
+			ans[i] = Integer.MAX_VALUE-1;
 		}
 		for(int i=0; i<denominations.length; i++){
 			//fill it with the int max value
@@ -23,12 +23,13 @@ public class CoinChangeProblem {
 				System.out.println(Arrays.toString(ans));
 				//the recurrence is basically 
 				//the count if we do not include the coin, or else if we include the current coin
-				if(j - denominations[i] < ans.length && j - denominations[i] >= 0){
-					ans[j] = Math.min(ans[j], 1 + ans[j - denominations[i]]);
-					
-					//then we need to update the last used coin
-					constituents[j] = i;
-				}
+				
+					if(j - denominations[i] < ans.length && j - denominations[i] >= 0){
+						ans[j] = Math.min(ans[j], 1 + ans[j - denominations[i]]);
+						
+						//then we need to update the last used coin
+						constituents[j] = i;
+					}
 			}
 		}
 		System.out.println(" Number of coins for individual totals == "+Arrays.toString(ans));
