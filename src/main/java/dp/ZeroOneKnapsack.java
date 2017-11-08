@@ -51,12 +51,20 @@ public class ZeroOneKnapsack {
         for(int i=0; i <= val.length; i++){
             for(int j=0; j <= W; j++){
                 if(i == 0 || j == 0){
+                	//this will have to be 0, which means, 
+                	// i==0 means is an element with 0 weight, and 
+                	//j == 0, means the max allowed weight is 0
                     K[i][j] = 0;
                     continue;
                 }
+                //we should check if the weight is still below or equal to the max allowed limit
                 if(j - wt[i-1] >= 0){
+                	//we are calc the max between
+                	//NOT including the newly calc weight, and incl the new weight (and cal the new value)
                     K[i][j] = Math.max(K[i-1][j], K[i-1][j-wt[i-1]] + val[i-1]);
                 }else{
+                	//if above condition fails, we do not include the new value
+                	//we directly use the value immediately above
                     K[i][j] = K[i-1][j];
                 }
             }
