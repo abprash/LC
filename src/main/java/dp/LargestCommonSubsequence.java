@@ -2,7 +2,7 @@ package dp;
 
 import java.util.Arrays;
 
-public class LargestCommonSubsequence {
+public abstract class LargestCommonSubsequence {
 	
 	public static int longestCommonSubsequence(String s1, String s2){
 		//we have to have a 2d array
@@ -46,7 +46,12 @@ public class LargestCommonSubsequence {
 		return max;
 	}
 	
+	public void main(String args){
+		System.out.println(longestCommonSubsequence("abcdef","dabdcefjagajg"));
+	}
+	
 	public static void main(String[] args){
 		System.out.println(longestCommonSubsequence("abcdef","dabdcefjagajg"));
+		System.exit(90);
 	}
 }
