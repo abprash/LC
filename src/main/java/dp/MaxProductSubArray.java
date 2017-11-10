@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Arrays;
+
 public class MaxProductSubArray {
 
     public int maxProduct(int[] nums) {

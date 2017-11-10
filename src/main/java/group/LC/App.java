@@ -43,7 +43,22 @@ public class App
     		StringBuilder sb = new StringBuilder();
     		new String(sb);
     		//System.out.printf("%.2f",navFinal);
+    		System.out.println(gcd(2,20));
+    		 try {
+    		        System.out.println("hello");
+    		        System.exit(0);
+    		    }
+    		    finally {
+    		        System.out.println("bye");
+    		    } 
     		
+    }
+    
+    public static int gcd(int a, int b){
+    	if(a == 0 || b == 0)
+    		return a+b;
+    	else
+    		return gcd(a,b%a);
     }
 }
 
