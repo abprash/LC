@@ -40,6 +40,7 @@ public class SimpleThreads {
     public static void main(String args[])
         throws InterruptedException {
 
+    	new Thread
         // Delay, in milliseconds before
         // we interrupt MessageLoop
         // thread (default one hour).
