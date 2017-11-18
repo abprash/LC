@@ -32,7 +32,7 @@ public class App
     		}*/
     		
     		////////////
-    		String x = "PORT:AXN,0,10;BGT,20,30;CXZ,10,30|BENCH:AXN,50,10;BGT,30,30;DFG,30,20;XYZ,0,10";
+    		/*String x = "PORT:AXN,0,10;BGT,20,30;CXZ,10,30|BENCH:AXN,50,10;BGT,30,30;DFG,30,20;XYZ,0,10";
     		System.out.println(Arrays.toString(x.split("\\|",2)));
     		List<Asset> list = new ArrayList<>();
     		Collections.sort(list, (Asset a, Asset b) -> a.a.compareTo(b.a));
@@ -50,8 +50,10 @@ public class App
     		    }
     		    finally {
     		        System.out.println("bye");
-    		    } 
+    		    } */
     		
+    	String a = "0123456";
+    	System.out.println(a.substring(7));
     }
     
     public static int gcd(int a, int b){
