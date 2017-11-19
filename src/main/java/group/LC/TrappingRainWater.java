@@ -52,7 +52,7 @@ class Solution {
 //the following is a greedy approach - will not work
 //it passed only 150/315 cases
 
-public class TrappingRainWater_Greedy_WillFail {
+public class TrappingRainWater {
 
 
     public int trap(int[] nums) {

@@ -4,6 +4,44 @@ import java.util.PriorityQueue;
 
 public class LongestConsecutiveSequence {
 
+	///**********************ANSWER - O(N)
+	
+	class Solution {
+	    public int longestConsecutive(int[] nums) {
+	        
+	        //initial validation
+	        if(nums == null || nums.length == 0)
+	            return 0;
+	        if(nums.length == 1)
+	            return 1;
+	        int ans = 0;
+	        Map<Integer, Integer> map = new HashMap<>();
+	        for(int i=0; i<nums.length ; i++){
+	            if(map.containsKey(nums[i])){
+	                //duplicate value
+	                continue;
+	            }
+	            else{
+	                //its a new value
+	                //search for the number before and after it
+	                int before = map.containsKey(nums[i] - 1)? map.get(nums[i]-1) : 0;
+	                int after = map.containsKey(nums[i] +1)? map.get(nums[i]+1) : 0;
+	                
+	                int sum = before + after + 1;
+	                map.put(nums[i], sum);
+	                ans = Math.max(sum, ans);
+	                
+	                //now we need to update those other values in the map as well, ie. left and right values to nums[i]
+	                map.put(nums[i] - before, sum);
+	                map.put(nums[i] + after, sum);
+	            }
+	        }
+	        return ans;
+	    }
+	}
+	
+	
+	
 	
 	//************************O(Nlog(N)) time complexity
 	
