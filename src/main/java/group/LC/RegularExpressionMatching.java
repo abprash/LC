@@ -25,6 +25,25 @@ isMatch("aab", "c*a*b") → true
  * 
 */
 public class RegularExpressionMatching {
+	
+	
+
+	    public boolean isMatch_Mine(String text, String pattern) {
+	        if(pattern.isEmpty())
+	            return text.isEmpty();
+	        boolean firstMatch = false;
+	        if(!text.isEmpty()){
+	            firstMatch = (text.charAt(0) == pattern.charAt(0)) || (pattern.charAt(0) == '.');
+	        }
+	        //now lets check for the * if it is present next
+	        if(pattern.length() >= 2 && pattern.charAt(1) == '*'){
+	            return (isMatch(text, pattern.substring(2))) || (firstMatch && isMatch(text.substring(1), pattern));
+	        }else{
+	            return firstMatch && isMatch(text.substring(1), pattern.substring(1));
+	        }
+	    }
+	
+	
 
     public boolean isMatch(String text, String pattern) {
         if (pattern.isEmpty()) return text.isEmpty();
@@ -42,35 +61,37 @@ public class RegularExpressionMatching {
     
     //**************************************DP Solution below
     
-    public boolean isMatch2(String s, String p) {
-
-        if (s == null || p == null) {
+    public boolean isMatch(String text, String pattern) {
+        if(text == null || pattern == null)
             return false;
-        }
-        boolean[][] dp = new boolean[s.length()+1][p.length()+1];
+        boolean[][] dp = new boolean[text.length()+1][pattern.length()+1];
         dp[0][0] = true;
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*' && dp[0][i-1]) {
+        ///what the hell is this!!!!!!!!!!
+        for(int i=0; i<pattern.length(); i++){
+            if (pattern.charAt(i) == '*' && dp[0][i-1]) {
                 dp[0][i+1] = true;
-            }
         }
-        for (int i = 0 ; i < s.length(); i++) {
-            for (int j = 0; j < p.length(); j++) {
-                if (p.charAt(j) == '.') {
-                    dp[i+1][j+1] = dp[i][j];
-                }
-                if (p.charAt(j) == s.charAt(i)) {
-                    dp[i+1][j+1] = dp[i][j];
-                }
-                if (p.charAt(j) == '*') {
-                    if (p.charAt(j-1) != s.charAt(i) && p.charAt(j-1) != '.') {
-                        dp[i+1][j+1] = dp[i+1][j-1];
-                    } else {
-                        dp[i+1][j+1] = (dp[i+1][j] || dp[i][j+1] || dp[i+1][j-1]);
+        }
+        for(int i=0; i<text.length(); i++){
+            for(int j=0; j<pattern.length(); j++){
+                if(text.charAt(i) == pattern.charAt(j))
+                    dp[i+1][j+1] = dp[i][j];//use the prev diag left value
+                if(pattern.charAt(j) == '.')
+                    dp[i+1][j+1] = dp[i][j];//use the prev diag left value
+                if(pattern.charAt(j) == '*'){
+                    //this is where it gets interesting
+                    //if the prev char in pattern and curr text char do not match AND prev char in text is not .
+                    if(pattern.charAt(j-1) != text.charAt(i) && pattern.charAt(j-1) != '.')
+                        dp[i+1][j+1] = dp[i+1][j-1];//take the value of the previous result on the table i.e. it does not match
+                    else{
+                        //this is for the situation where it matches with the prev char,
+                        //so it repeats at least once or multiple times
+                        //so we use multiple values
+                        dp[i+1][j+1] = dp[i+1][j-1] || dp[i+1][j] || dp[i][j+1];
                     }
                 }
             }
         }
-        return dp[s.length()][p.length()];
+        return dp[text.length()][pattern.length()];
     }
 }
