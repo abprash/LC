@@ -23,4 +23,9 @@ public class WordBreak1 {
         }
         return f[s.length()];
     }
+    
+    public static void main(String[] args){
+    	String s = "adf";
+    	s.start
+    }
 }
