@@ -4,6 +4,9 @@ public class FindDiff {
 	public static void main(String[] args)
 	{
 		findTheDifference("adfasd", "aaddssf");
+		int size = Integer.MAX_VALUE - 2000000000;
+		System.out.println(size);
+		int[] maxArray = new int[size];
 	}
 	public static char findTheDifference(String s, String t) {
         //get the ascii sum of all the chars in s
@@ -22,5 +25,7 @@ public class FindDiff {
         char result = (char) ((char) tSum - sSum);
         return result;
     }
+	
+	
 
 }
