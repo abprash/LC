@@ -38,9 +38,35 @@ public class QuickSort {
 			quicksort(arr, i, high);
 	}
 	
+	
+	public void quickSort2(int[] arr, int low, int high){
+		if(low < high){
+			int pivot = (low+high)/2;
+			int i=0, j = high;
+			while(i <= j){
+				while(arr[i] < arr[pivot])
+					i++;
+				while(arr[j] > arr[pivot])
+					j--;
+				//swap them, and mainly check the indices as well
+				if(i <= j){
+					int temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+					j--;
+					i++;
+				}
+			}
+			//now do this on the other two halves
+			if(low < j)
+				quickSort2(arr, low, j);
+			if(i < high)
+				quickSort2(arr, i, high );
+		}
+	}
 	public static void main(String[] args){
 		int[] arr = {10, 99, 7, 2, 1, 5, 29, 1000, 999, 3};
-		new QuickSort().quicksort(arr, 0, arr.length-1);
+		new QuickSort().quickSort2(arr, 0, arr.length-1);
 		System.out.println(Arrays.toString(arr));
 	}
 

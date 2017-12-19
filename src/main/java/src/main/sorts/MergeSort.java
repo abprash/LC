@@ -13,7 +13,7 @@ public class MergeSort {
 		int middle = (low + high)/2;
 		mergeSort(arr, low, middle);
 		mergeSort(arr, middle+1, high);
-		merge(arr, low, middle, high);
+		merge2(arr, low, middle, high);
 		}
 	}
 	
@@ -44,6 +44,40 @@ public class MergeSort {
 		//copy the remaining elements into arr
 		//some elements may be left out
 		while(i <= middle){
+			arr[k] = helper[i];
+			i++;
+			k++;
+		}
+		while(j <= high){
+			arr[k] = helper[j];
+			j++;
+			k++;
+		}
+	}
+	
+	
+	public void merge2(int[] arr, int low, int mid, int high) {
+
+		for (int i = low; i <= high; i++) {
+			// copy the elements from the input to the helper array
+			helper[i] = arr[i];
+		}
+		
+		//now copy the elements back from low to middle, and middle+1 to high
+		int i = low, j = mid+1, k = low;
+		while(i <= mid && j <= high){
+			if(helper[i] < helper[j]){
+				arr[k] = helper[i];
+				i++;
+			}
+			else{
+					arr[k] = helper[j];
+					j++;
+			}
+			k++;
+		}
+		//now for the leftover elements
+		while(i <= mid){
 			arr[k] = helper[i];
 			i++;
 			k++;
