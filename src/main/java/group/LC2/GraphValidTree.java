@@ -1,5 +1,10 @@
 package group.LC2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class GraphValidTree {
 
 }
@@ -49,7 +54,7 @@ class Solution {
 //did not work fully
 //28/41 test cases passed
 
-class Solution {
+class Solution2 {
     public boolean validTree(int n, int[][] edges) {
         
         Map<Integer, List<Integer>> graph = new HashMap<>();

@@ -1,10 +1,9 @@
 package group.LC2;
 
+import java.util.ArrayList;
+
 public class CourseSchedule {
 
-}
-
-class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
 //         if(prerequisites == null || prerequisites.length == 0 || numCourses == 0)
 //             return false;

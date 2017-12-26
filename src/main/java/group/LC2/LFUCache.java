@@ -1,5 +1,9 @@
 package group.LC2;
 
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+
 public class LFUCache {
     
     Map<Integer, Integer> vals;
