@@ -65,6 +65,6 @@ public class PrefixEvaluator {
 		String expr2 = "( * 1 2 3 ( + 2 11 12 123 ) ( * 1 2 3 ( + 2 3 5 ) ) )";
 		String expr1 = "( + 1 2 33 )";
 		String expr3 = "( + 1 2 3 ( + 2 11 12 123 ) )";
-		System.out.println(getPrefixResult(expr3));
+		System.out.println(getPrefixResult(expr2));
 	}
 }
