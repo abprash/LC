@@ -6,6 +6,11 @@ import java.util.List;
 public class Combinations {
 
 
+	
+	public static void main(String[] args){
+		StringBuilder sb = new StringBuilder();
+		sb.del
+	}
     public List<List<Integer>> combine(int n, int k) {
         int[] nums = new int[n];
         for(int i=1; i<=n; i++){
