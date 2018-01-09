@@ -1,5 +1,7 @@
 package group.LC2;
 
+import java.util.HashMap;
+
 public class MaximumBinaryTree {
 
 
@@ -38,5 +40,30 @@ public class MaximumBinaryTree {
         if((maxIndex+1) <= end)
             root.right = helper(maxIndex+1, end, nums);
         return root;
+    }
+    public static void main(String[] args){
+    	String s = "asdbnasd";
+    	StringBuilder result = new StringBuilder();
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if(!map.containsKey(c)){
+                //append the letter
+                result.append(c);
+                map.put(c, 1);
+            }
+            else{
+                int count = map.get(c);
+//                char newChar = c;
+//                for(int j=0; j<count; j++)
+//                    newChar++;
+//                result.append(newChar);
+//                count++;
+                map.put(c, count+1);
+            }
+        }
+        System.out.println(map);
+        map.clear();
+        System.out.println(result.toString());
     }
 }
