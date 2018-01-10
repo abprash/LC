@@ -16,7 +16,7 @@ class Solution {
     int length = 0;
     int common = 0;
     
-    //we have to account for curved paths also,
+    //we have to account for V shaped paths also,
     
     public int longestUnivaluePath(TreeNode root) {
         if(root == null)
