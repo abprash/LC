@@ -1,6 +1,7 @@
 package group.LC;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.*;
+import java.util.concurrent.*;
 
 public class LongestAbsoluteFilePath {
 	
