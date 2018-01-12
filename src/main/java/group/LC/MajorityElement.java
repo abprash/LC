@@ -1,5 +1,42 @@
 package group.LC;
 
+
+//Alternate approach
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        if(nums == null || nums.length == 0)
+            return 0;
+        //we need the index, count and the num to be stored
+        int index = 0, count = 0, num = 0;
+        for(int i=0; i<nums.length; i++){
+            //this is the first element
+        	if(i == 0){
+                num = nums[i];
+                count = 1;
+                index = 0;
+            }
+            else{
+            	//if num and nums[i] are equal
+                if(nums[i] == num)
+                    count++;
+                else{
+                    //this is a diff num, so reduce the count
+                    count--;
+                    //if count reached 0, then we change num to curr element 
+                    if(count == 0){
+                        num = nums[i];
+                        index = i;
+                        count = 1;
+                    }
+                }
+            }
+        }
+        return num;
+    }
+}
+
+/////////////////////////////////////////////
 public class MajorityElement {
 
     public int majorityElement(int[] nums) {
@@ -22,14 +59,5 @@ public class MajorityElement {
         return nums[index]; 
     }
     
-    public static void main(String[] args){
-    	
-    	String s = "sdf";
-    	String[] parts = {"d","\ts1","\ts2","\t\tf1"};
-    	for(int i=0; i<parts.length; i++){
-    		if(parts[i].contains("\t"))
-    			parts[i] = parts[i].replaceAll("\t", "");
-    		System.out.println(parts[i]);
-    	}
     }
 }
