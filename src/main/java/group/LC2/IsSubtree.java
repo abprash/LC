@@ -12,6 +12,10 @@ public class IsSubtree {
  * }
  */
 
+	
+	//reference
+	//https://leetcode.com/problems/subtree-of-another-tree/discuss/102724/
+		
     public boolean isSubtree(TreeNode s, TreeNode t) {
         if(s == null && t == null)
             return true;
