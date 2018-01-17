@@ -22,26 +22,6 @@ class Solution {
         return helper(inorder, inorder.length-1, 0, postorder, postorder.length-1 );
     }
     
-//     public TreeNode helper(int inEnd, int inStart, int postEnd, int[] inorder, int[] postorder){
-//         //validity check - we'll come back to it later
-//         if (postEnd < 0 || inStart < inEnd)
-// 		    return null;
-        
-//         TreeNode root = new TreeNode(postorder[postEnd]);
-//         //now separate the inorder array into left and right
-//         int rootIndex = 0;
-//         for(int i = inEnd; i <= inStart; i++){
-//             if(root.val == inorder[i]){
-//                 rootIndex = i;
-//                 break;
-//             }
-//         }
-        
-//         //now recursively call helpers on the child nodes as well
-//         root.left = helper(rootIndex+1, inEnd, postEnd - (inStart - rootIndex) - 1 , inorder, postorder);
-//         root.right = helper(inStart, rootIndex-1, postEnd-1, inorder, postorder);
-//         return root;
-//     }
     
     public TreeNode helper(int[] inorder, int inStart, int inEnd, int[] postorder, int postEnd){
         //inEnd is in the extreme left and inStart is in the extreme right
