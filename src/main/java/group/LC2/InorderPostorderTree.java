@@ -2,7 +2,6 @@ package group.LC2;
 
 public class InorderPostorderTree {
 
-}
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -12,7 +11,6 @@ public class InorderPostorderTree {
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         //postorder's last node is the root always the root
         
