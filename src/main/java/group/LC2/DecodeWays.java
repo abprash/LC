@@ -2,6 +2,36 @@ package group.LC2;
 
 import java.util.*;
 
+import org.junit.*;
+
+
+//Much better solution
+
+class Solution {
+    public int numDecodings(String s) {
+        if(s == null || s.length() == 0)
+            return 0;
+        int[] dp = new int[s.length() + 1];
+        dp[0] = 1;
+        if(s.length() == 1){
+            return s.charAt(0) != '0' ? 1 : 0;
+        }
+        dp[1] = s.charAt(0) != '0' ? 1 : 0;
+        for(int i=2; i<=s.length(); i++){
+            int num1 = Integer.parseInt(s.substring(i-1,i));
+            int num2 = Integer.parseInt(s.substring(i-2,i));
+            if(num1 >= 1 && num1 <= 9)
+                dp[i] += dp[i-1];
+            if(num2 >= 10 && num2 <= 26)
+                dp[i] += dp[i-2];
+        }
+        return dp[s.length()];
+    }
+}
+
+//*********************************
+
+
 public class DecodeWays {
 	
 	//TLE
@@ -64,14 +94,12 @@ public class DecodeWays {
                     }
                 }
             }
-            // else{
-            //     recurse(letterSoFar + letter, s.substring(1));
-            // }
         }
     }
     
     public static void main(String[] args){
     	String s = "4757562545844617494555774581341211511296816786586787755257741178599337186486723247528324612117156948";
-    	System.out.println(new DecodeWays().numDecodings(s));
+    	//System.out.println(new DecodeWays().numDecodings(s));
+    	Assert.assertEquals(589824, new DecodeWays().numDecodings(s));
     }
 }
