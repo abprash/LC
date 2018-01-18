@@ -22,7 +22,7 @@ public class MeetingRooms1 {
         
         //now have a straightforward loop and test it
         for(int i=1; i<intervals.length; i++){
-            if(intervals[i-1].start < intervals[i].end)
+            if(intervals[i].start < intervals[i-1].end)
                 return false;
         }
         return true;
