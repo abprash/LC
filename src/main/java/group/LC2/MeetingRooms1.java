@@ -1,5 +1,7 @@
 package group.LC2;
 
+import java.util.*;
+
 public class MeetingRooms1 {
 
 /**
@@ -15,7 +17,10 @@ public class MeetingRooms1 {
     public boolean canAttendMeetings(Interval[] intervals) {
         if(intervals == null || intervals.length == 0)
             return false;
+        //we have to sort
+        //no other way other than doing this
         // Sort the intervals by start time
+        
         Arrays.sort(intervals, new Comparator<Interval>() {
             public int compare(Interval a, Interval b) { return a.start - b.start; }
         });
