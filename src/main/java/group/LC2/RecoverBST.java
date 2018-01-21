@@ -2,19 +2,9 @@ package group.LC2;
 
 public class RecoverBST {
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-
     TreeNode n1 = null, n2 = null;
-    TreeNode prev = new TreeNode(Integer.MIN_VALUE);
     
+    TreeNode prev = new TreeNode(Integer.MIN_VALUE);
     
     public void recoverTree(TreeNode root) {
         //we will traverse the tree
