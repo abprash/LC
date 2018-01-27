@@ -3,6 +3,35 @@ import java.util.*;
 
 public class CombinationSum4 {
 
+	//************************************
+	
+	class Solution {
+	    Map<Integer, Integer> map = new HashMap<>();
+	    
+	    public int combinationSum4(int[] nums, int target) {
+	        if(nums == null || nums.length == 0)
+	            return 0;
+	        if(target < 0)
+	            return 0;
+	        int count = 0;
+	        //if the target num is already present
+	        if(map.containsKey(target))
+	            return map.get(target);
+	        //if target reaches 0
+	        if(target == 0)
+	            return 1;
+	        for(int num : nums){
+	            count += combinationSum4(nums, target-num);
+	        }
+	        map.put(target, count);
+	        return count;
+	    }
+	}
+	
+	//*************************************
+	//solution passed 10/17 cases
+	//then TLE
+	
 	int count = 0;
     public int combinationSum4(int[] nums, int target) {
         if(nums == null || nums.length == 0)
