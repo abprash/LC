@@ -4,101 +4,57 @@ public class LonelyPixel2 {
 
 //https://leetcode.com/problems/lonely-pixel-ii/discuss/100216/Verbose-Java-O(m*n)-Solution-HashMap
 	
-    public int findBlackPixel(char[][] picture, int N) {
-        int m = picture.length;
-        if (m == 0) return 0;
-        int n = picture[0].length;
-        if (n == 0) return 0;
-        
-        Map<String, Integer> map = new HashMap<>();
-        int[] colCount = new int[n];
-        
-        for (int i = 0; i < m; i++) {
-            String key = scanRow(picture, i, N, colCount);
-            if (key.length() != 0) {
-                map.put(key, map.getOrDefault(key, 0) + 1);
-            }
-        }
-        
-        int result = 0;
-        for (String key : map.keySet()) {
-            if (map.get(key) == N) {
-                for (int j = 0; j < n; j++) {
-                    if (key.charAt(j) == 'B' && colCount[j] == N) {
-                        result += N;
-                    }
-                }
-            }
-        }
-        
-        return result;
-    }
-    
-    private String scanRow(char[][] picture, int row, int target, int[] colCount) {
-        int n = picture[0].length;
-        int rowCount = 0;
-        StringBuilder sb = new StringBuilder();
-        
-        for (int j = 0; j < n; j++) {
-            if (picture[row][j] == 'B') {
-                rowCount++;
-                colCount[j]++;
-            }
-            sb.append(picture[row][j]);
-        }
-        
-        if (rowCount == target) return sb.toString();
-        return "";
-    }
-}
-//still not correct
-//not a great approach
-//100/118 cases passed..
-class Solution {
-    Set<Integer> cols = new HashSet<>();
-    public int findBlackPixel(char[][] picture, int N) {
-     if(picture == null || picture.length == 0)
-            return 0;
-        int ans = 0, col = 0, rowCount = 0;
-        List<Integer> colPositions = new ArrayList<>();
-        
-        for(int i=0; i<picture.length; i++){
-            for(int j=0; j<picture[0].length; j++){
-                //check each row
-                //if each row has only one pixel, then check that column, 
-                //if both return true - yes lonely
-                //else no
-                if(picture[i][j] == 'B' && !cols.contains(j)){
-                    colPositions.add(j);
-                    rowCount++;
-                }
-            }
-            if(rowCount == N){
-                //check that col
-                ans += isLonelyCol(picture, colPositions, N);
-            }
-            //reset the positions
-            colPositions = new ArrayList<>();
-            rowCount = 0;
-        }
-        return ans;
-    }
-    
-    public int isLonelyCol(char[][] picture, List<Integer> list, int N){
-        int colCount = 0;
-        int res = 0;
-        for(int col : list){
-            for(int i=0; i<picture.length; i++){
-                if(picture[i][col] == 'B')
-                    colCount++;
-            }
-        
-            if(colCount == N){
-                res += N;
-                cols.add(col);
-            }
-            colCount = 0;
-        }
-        return res;
-    }
+	class Solution {
+	    Map<String, Integer> map = new HashMap<>();
+	    public int findBlackPixel(char[][] picture, int N) {
+	        if(picture == null || picture.length == 0)
+	            return 0;
+	        int res = 0;
+	        int[] colCount = new int[picture[0].length];
+	        //use a hashmap to store the signature and keep going
+	        for(int i=0; i<picture.length; i++){
+	            String key = scanRow(picture, i, N, colCount);
+	            if(key.length() >= 1){
+	                if(map.containsKey(key))
+	                    map.put(key, map.get(key)+1);
+	                else map.put(key, 1);
+	            }
+	        }
+	        //System.out.println(map);
+	        //System.out.println(Arrays.toString(colCount));
+	        
+	        //now double check the cols just in case
+	        
+	        for(Map.Entry<String, Integer> e : map.entrySet()){
+	            //check those cols alone
+	            if(e.getValue() == N){
+	                //count the num of B's
+	                String key = e.getKey();
+	                for(int i=0; i<colCount.length; i++){
+	                    //just see if they match
+	                    if(colCount[i] == N && key.charAt(i) == 'B')
+	                        res += N;
+	                }
+	            }
+	        }
+
+	        return res;
+	    }
+	    
+	    public String scanRow(char[][] picture, int row, int N, int[] colCount){
+	        StringBuilder sb = new StringBuilder();
+	        int rowCount = 0;
+	        for(int i=0; i<picture[0].length; i++){
+	            sb.append(picture[row][i]);
+	            if(picture[row][i] == 'B'){
+	                colCount[i]++;
+	                rowCount++;
+	            }
+	        }
+	        if(rowCount == N)
+	            return sb.toString();
+	        else
+	            return "";
+	    }
+	}
 }
