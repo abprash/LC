@@ -1,17 +1,19 @@
 package group.LC3;
 
+
+import java.util.*;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
 public class MostFrequentSubtreeSum {
 
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+ //Definition for a binary tree node.
+  
+ 
 	
 	//much better AC solution
 	//my own
@@ -68,15 +70,7 @@ public class MostFrequentSubtreeSum {
         return root.val + sum(root.left) + sum(root.right);
     }
 }
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+
 
 //brute force algo
 //TLE - 58/61 cases passed
