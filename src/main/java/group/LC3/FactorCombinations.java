@@ -5,9 +5,9 @@ import java.util.*;
 public class FactorCombinations {
 
 
+	//https://leetcode.com/problems/factor-combinations/discuss/68040/My-Recursive-DFS-Java-Solution
 	//much better solution
 	
-    int globalN = 0;
     public List<List<Integer>> getFactors(int n) {
         List<List<Integer>> ans = new ArrayList<>();
         
@@ -15,7 +15,6 @@ public class FactorCombinations {
         if(n <= 1)
             return ans;
         
-        globalN = n;
         
         backtrack(ans, new ArrayList<Integer>(), 2, n);
         
@@ -32,9 +31,12 @@ public class FactorCombinations {
             }
             return;
         }
+        //no need to have a separate end, keep n itself as the end and use it
         for(int i = start; i <= n; i++){
             if((n%i) == 0){
                 tempList.add(i);
+                
+                //start the next iteration from the current number, and not from start
                 backtrack(ans, tempList, i, n/i);
                 tempList.remove(tempList.size()-1);
             }
