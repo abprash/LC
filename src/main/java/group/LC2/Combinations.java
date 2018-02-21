@@ -9,7 +9,7 @@ public class Combinations {
 	
 	public static void main(String[] args){
 		StringBuilder sb = new StringBuilder();
-		sb.del
+		
 	}
     public List<List<Integer>> combine(int n, int k) {
         int[] nums = new int[n];
@@ -17,7 +17,7 @@ public class Combinations {
             nums[i-1] = i;
         }
         List<List<Integer>> ans = new ArrayList<>();
-        backtrack(ans, new ArrayList<>(), nums, k, 0);
+        backtrack(ans, new ArrayList<Integer>(), nums, k, 0);
         return ans;
     }
     

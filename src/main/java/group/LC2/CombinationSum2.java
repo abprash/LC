@@ -1,12 +1,14 @@
 package group.LC2;
 
+import java.util.*;
+
 public class CombinationSum2 {
 
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(candidates);
-        backtrack(ans, new ArrayList<>(), candidates, target, 0);
+        backtrack(ans, new ArrayList<Integer>(), candidates, target, 0);
         return ans;
     }
     
