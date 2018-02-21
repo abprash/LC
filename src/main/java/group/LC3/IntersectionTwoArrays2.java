@@ -1,5 +1,7 @@
 package group.LC3;
 
+import java.util.*;
+
 public class IntersectionTwoArrays2 {
 
 	//https://leetcode.com/problems/intersection-of-two-arrays-ii/description/

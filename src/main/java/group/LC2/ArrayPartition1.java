@@ -6,7 +6,7 @@ import java.util.*;
  * makes sum of min(ai, bi) for all i from 1 to n as large as possible.
 */
 
-class Solution {
+public class ArrayPartition1 {
     public int arrayPairSum(int[] nums) {
         if(nums == null || nums.length == 0)
             return 0;
@@ -33,13 +33,10 @@ class Solution {
 
 //***********************************
 
-public class ArrayPartition1 {
-
-}
 
 // O(Nlog N) time complexity
 // not great.. but AC solution
-class Solution {
+class Solution2 {
 	public int arrayPairSum(int[] nums) {
 		if (nums == null || nums.length == 0)
 			return 0;

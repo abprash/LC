@@ -5,19 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/* Definition for undirected graph.*/
+class UndirectedGraphNode {
+    int label;
+    List<UndirectedGraphNode> neighbors;
+    UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
+};
+
 public class CloneGraph {
-
-}
-
-
- /* Definition for undirected graph.*/
-  class UndirectedGraphNode {
-      int label;
-      List<UndirectedGraphNode> neighbors;
-      UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
-  };
  
-class Solution {
+
     Map<Integer, UndirectedGraphNode> map = new HashMap<>();
     
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {

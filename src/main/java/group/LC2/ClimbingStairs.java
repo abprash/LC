@@ -23,7 +23,7 @@ public class ClimbingStairs {
 
 
 //Bottom up solution
-class Solution {
+class Solution11 {
     public int climbStairs(int n) {
         //basically its almost a fibonacci series
         //if n == 0, 1 or 2
