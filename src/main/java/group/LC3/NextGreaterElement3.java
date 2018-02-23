@@ -1,5 +1,7 @@
 package group.LC3;
 
+import java.util.Arrays;
+
 public class NextGreaterElement3 {
 
 
