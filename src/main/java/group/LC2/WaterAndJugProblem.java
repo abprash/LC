@@ -2,12 +2,11 @@ package group.LC2;
 
 public class WaterAndJugProblem {
 
-}
+	//if given x and y are relatively prime then we can actually get all nums from min(x,y) till (x+y) no problem. Its possible.
 
 //GCD Math problem
 
 
-class Solution {
     public boolean canMeasureWater(int x, int y, int z) {
         
         if(x + y < z)
