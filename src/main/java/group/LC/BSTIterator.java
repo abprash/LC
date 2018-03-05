@@ -2,6 +2,7 @@ package group.LC;
 
 public class BSTIterator {
 
+	//https://leetcode.com/problems/binary-search-tree-iterator/description/
 
 	
 	//*********************BETTER SOLUTION
@@ -16,7 +17,7 @@ public class BSTIterator {
 	 * }
 	 */
 
-	public class BSTIterator {
+	 class BSTIterator2 {
 
 	    TreeNode root;
 	    //List<Integer> list = new ArrayList<>();
@@ -25,6 +26,8 @@ public class BSTIterator {
 	    static int counter = 0;
 	    static int size = 0;
 	    List<Integer> next = null;
+	    
+	    
 	    public void loadTree(TreeNode root){
 	        if(root == null)
 	            return;
@@ -37,13 +40,13 @@ public class BSTIterator {
 	        return;
 	    }
 	    
-	    public BSTIterator(TreeNode root) {
+	    public BSTIterator2(TreeNode root) {
 	        this.root = root;
 	        loadTree(root);
-	        //System.out.println(list);
-	        //size = list.size();
+	        
 	    }
 
+	    
 	    /** @return whether we have a next smallest number */
 	    public boolean hasNext() {
 	       return (!stack.isEmpty());

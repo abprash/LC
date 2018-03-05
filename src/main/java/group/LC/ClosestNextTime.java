@@ -134,8 +134,4 @@ public class ClosestNextTime {
 	        }
 	        return false;
 	    }
-	    
-//	     public String makeTimeValid(int hh, int mm){
-	        
-//	     }
 }

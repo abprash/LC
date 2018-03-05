@@ -2,10 +2,7 @@ package group.LC;
 
 public class BombEnemies {
 
-}
 
-
-class Solution {
     int max = Integer.MIN_VALUE;
     
     public int maxKilledEnemies(char[][] grid) {

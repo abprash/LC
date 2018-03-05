@@ -33,7 +33,11 @@ public class ConvertSortedArrayToBST {
         //we need to compute the mid again and invoke the function on two diff subparts
         //we need to validate low and high
         if(low < high){
-            int mid = (low+high)/2;
+        	
+            //int mid = (low+high)/2;
+            
+        	//to prevent overflows - always calc mid like below
+        	int mid = high - (high - low)/2;
             TreeNode newNode = new TreeNode(nums[mid]);
             if(low == mid-1){
                 //nothing
