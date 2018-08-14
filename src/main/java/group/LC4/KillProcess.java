@@ -17,7 +17,6 @@ public class KillProcess {
         stack.add(kill);
         while(! stack.isEmpty()){
             int toKill = stack.pop();
-            visited.add(toKill);
             set.add(toKill);
             if(map.containsKey(toKill)){
                 set.addAll(map.get(toKill));
