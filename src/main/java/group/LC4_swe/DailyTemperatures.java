@@ -1,4 +1,4 @@
-package group.LC4;
+package group.LC4_swe;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package group.LC4;
+package group.LC4_swe;
 
 //my very own solution... thought from scratch 
 //https://leetcode.com/problems/generate-parentheses/description/

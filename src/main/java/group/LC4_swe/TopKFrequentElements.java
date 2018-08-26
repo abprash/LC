@@ -1,4 +1,4 @@
-package group.LC4;
+package group.LC4_swe;
 
 //https://leetcode.com/problems/top-k-frequent-elements/description/
 
