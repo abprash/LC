@@ -4,7 +4,31 @@ package group.LC4_swe;
 
 public class SkylineIncreasing {
 
-    public int maxIncreaseKeepingSkyline(int[][] grid) {
+
+        public int maxIncreaseKeepingSkyline(int[][] grid) {
+            if(grid == null || grid.length == 0)
+                return 0;
+            int[] rowMax = new int[grid.length];
+            int[] colMax = new int[grid[0].length];
+            int ans = 0;
+            //we simply maintain two arrays for the row and col maxes. We only do one sweep of the grid to get the maxes instead of two independent sweeps
+            for(int i=0; i<grid.length; i++){
+                for(int j=0; j<grid[0].length; j++){
+                    colMax[j] = Math.max(grid[i][j], colMax[j]);
+                    rowMax[i] = Math.max(rowMax[i], grid[i][j]);
+                }
+            }
+            //we then need the min of the maxes of the two corresponding row and col at corresponding grid[i][j] and then add the difference.
+            //return the sum of differences as the answer for the problem.
+            for(int i=0; i<grid.length; i++){
+                for(int j=0; j<grid[0].length; j++){
+                    ans +=  Math.min(rowMax[i], colMax[j]) - grid[i][j];
+                }
+            }
+            return ans;
+        }
+
+    public int maxIncreaseKeepingSkyline_verbose(int[][] grid) {
         if(grid == null || grid.length == 0)
             return 0;
         int[] rowMax = new int[grid.length];
